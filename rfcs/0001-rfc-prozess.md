@@ -6,7 +6,7 @@
 
 ## Zusammenfassung
 
-Wir führen einen RFC-Prozess (Request for Comments) ein, um Entscheidungen im Team transparent, asynchron und nachvollziehbar zu treffen. Entscheidungen werden nach dem Konsent-Prinzip getroffen.
+Wir führen einen RFC-Prozess (Request for Comments) ein, um Entscheidungen in der Real Life Organisation transparent, asynchron und nachvollziehbar zu treffen — von technischer Architektur bis Organisationsstruktur. Entscheidungen werden nach dem Konsent-Prinzip getroffen.
 
 ## Motivation
 
@@ -21,7 +21,23 @@ Als wachsendes Team brauchen wir einen Weg, um:
 
 ### Was ist ein RFC?
 
-Ein RFC ist ein kurzes Dokument, das einen Vorschlag beschreibt — eine technische Entscheidung, einen Prozess, eine Architekturänderung, oder alles andere, was das Team betrifft und abgestimmt werden sollte.
+Ein RFC ist ein kurzes Dokument, das einen Vorschlag beschreibt — eine technische Entscheidung, einen Prozess, eine Architekturänderung, oder alles andere, was die Organisation betrifft und abgestimmt werden sollte.
+
+### Scope
+
+RFCs sind für Entscheidungen, die die Organisation als Ganzes betreffen:
+
+- Grundsatzentscheidungen — Vision, Werte, Prinzipien
+- Organisationsstruktur — Kreise, Rollen, Verantwortlichkeiten
+- Strategische Weichenstellungen — Ausrichtung, Partnerschaften, Finanzierung
+- Technische Architektur — Protokolle, Standards, die mehrere Module betreffen
+- Prozesse — wie wir zusammenarbeiten
+
+Kein RFC nötig für:
+
+- Operative Umsetzung innerhalb bestehender Verantwortungsbereiche
+- Bugfixes, Refactoring, Tests, Dokumentation
+- Entscheidungen, die nur ein Modul oder eine Person betreffen
 
 ### Wer darf RFCs einreichen?
 
@@ -79,6 +95,10 @@ RFCs werden fortlaufend nummeriert: `0001`, `0002`, etc. Die Nummer wird beim Er
 - **Meetings:** Synchron, nicht jeder kann teilnehmen, Ergebnisse gehen verloren.
 
 Wir nutzen PRs, weil sie Diskussion, Dokument und Entscheidung an einem Ort vereinen.
+
+## Ausblick
+
+Dieser Prozess ist für den aktuellen Stand der Organisation gedacht — ein kleines Kern-Team. Mit wachsendem Netzwerk wird er sich weiterentwickeln: Kreise mit eigener Governance, föderierte Entscheidungsprozesse über Gemeinschaften hinweg. Die Grundprinzipien — Konsent, Transparenz, Asynchronität — bleiben.
 
 ## Offene Fragen
 
