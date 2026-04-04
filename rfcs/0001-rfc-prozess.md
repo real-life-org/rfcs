@@ -13,9 +13,10 @@ Wir führen einen RFC-Prozess (Request for Comments) ein, um Entscheidungen in d
 Als wachsendes Team brauchen wir einen Weg, um:
 
 - **Transparenz** zu schaffen — jeder kann sehen, welche Entscheidungen anstehen und warum sie getroffen wurden
-- **Asynchron** zu arbeiten — nicht jede Entscheidung braucht ein Meeting
+- **Asynchron** zu arbeiten
 - **Nachvollziehbarkeit** zu gewährleisten — die Begründung hinter Entscheidungen bleibt erhalten
 - **Alle einzubeziehen** — jedes Teammitglied hat die Möglichkeit, Einwände und Ideen einzubringen
+- **Grundlage fuer KIs** — Das Repository soll als Grundlage fuer die Entscheidungsfindung von KIs sein 
 
 ## Vorschlag
 
