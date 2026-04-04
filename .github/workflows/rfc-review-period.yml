@@ -61,3 +61,41 @@ jobs:
                 ? `Review-Phase abgeschlossen (${Math.floor(days)} Tage)`
                 : `Review-Phase läuft noch (${Math.floor(days)}/${REVIEW_DAYS} Tage)`
             });
+
+  sync-pr-body:
+    name: RFC-Text → PR-Body synchronisieren
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: RFC-Datei finden und PR-Body aktualisieren
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const glob = require('glob');
+
+            // Finde die RFC-Datei (es sollte genau eine neue sein)
+            const files = glob.sync('rfcs/[0-9]*.md');
+            if (files.length === 0) return;
+
+            // Finde die Datei die in diesem PR geändert wurde
+            const { data: prFiles } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+
+            const rfcFile = prFiles.find(f => f.filename.startsWith('rfcs/') && f.filename.endsWith('.md'));
+            if (!rfcFile) return;
+
+            const content = fs.readFileSync(rfcFile.filename, 'utf8');
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              body: content
+            });
+
+            console.log(`PR-Body synchronisiert mit ${rfcFile.filename}`);
