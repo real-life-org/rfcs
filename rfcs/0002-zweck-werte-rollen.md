@@ -1,6 +1,6 @@
 # RFC-0002: Zweck, Werte und Rollen der Organisation
 
-- **Autor:** Anton Tranélis
+- **Autor:** Anton Tranelis
 - **Datum:** 2026-04-04
 - **Aktualisiert:** 2026-04-10
 - **Status:** In Review
@@ -11,7 +11,7 @@ Dieses Dokument beschreibt den Zweck der Real Life Organisation, ihre Werte und 
 
 ## Motivation
 
-Die Organisation ist das Kernteam, das die Werkzeuge baut — im Unterschied zum [Netzwerk](https://github.com/real-life-org/docs/blob/main/netzwerk.md), das dezentral und ohne feste Rollen funktioniert. Die Organisation braucht klare Zuständigkeiten: Wenn ein Bug im Core ist, muss klar sein, wer entscheidet. Wenn eine Architekturentscheidung ansteht, muss klar sein, wer sie trifft.
+Die Organisation ist das Kernteam, das die Werkzeuge baut — im Unterschied zum [Netzwerk](https://github.com/real-life-org/docs/blob/main/netzwerk.md), das dezentral und ohne feste Rollen funktioniert. Die Organisation braucht klare Zuständigkeiten: Wenn ein Bug im Core ist, wenn ein Release ansteht, wenn ein Förderantrag eingereicht werden muss — es muss klar sein, wer sich darum kümmert.
 
 ## Zweck
 
@@ -19,7 +19,6 @@ Die Organisation baut und pflegt die Werkzeuge, mit denen sich Menschen und Geme
 
 - **Web of Trust** — dezentrales Vertrauensprotokoll
 - **Real Life Stack** — modulare Komponenten für Gemeinschafts-Apps
-- **Real Life Map** — Karte zur Sichtbarmachung lokaler Initiativen
 - **Server-Infrastruktur** — Relay, Vault, Profiles, F-Droid Repo
 
 ## Werte
@@ -44,9 +43,9 @@ Rollen definieren Zuständigkeiten. Wer eine Rolle hat, entscheidet eigenständi
 
 **Aktuell:** Anton
 
-### Entwicklung & UX
+### UX & Design
 
-**Zuständigkeit:** App-Entwicklung, Interface-Design, Nutzererfahrung, Mobile
+**Zuständigkeit:** Interface-Design, Nutzererfahrung, Mobile, Nutzerforschung
 
 **Aktuell:** Sebastian
 
