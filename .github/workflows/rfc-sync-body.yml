@@ -1,0 +1,54 @@
+name: RFC Body Sync
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'rfcs/*.md'
+
+jobs:
+  sync-body:
+    name: PR-Body aktualisieren
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: RFC-Datei als PR-Body setzen
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const glob = require('glob');
+
+            // Finde die RFC-Datei im PR (nicht template.md)
+            const files = fs.readdirSync('rfcs')
+              .filter(f => f.endsWith('.md') && f !== 'template.md');
+
+            // Finde die Datei die in diesem PR geändert wurde
+            const { data: prFiles } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+
+            const rfcFile = prFiles
+              .map(f => f.filename)
+              .find(f => f.startsWith('rfcs/') && f.endsWith('.md') && !f.endsWith('template.md'));
+
+            if (!rfcFile) {
+              console.log('Keine RFC-Datei im PR gefunden');
+              return;
+            }
+
+            const content = fs.readFileSync(rfcFile, 'utf8');
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              body: content
+            });
+
+            console.log(`PR-Body aktualisiert mit ${rfcFile}`);
