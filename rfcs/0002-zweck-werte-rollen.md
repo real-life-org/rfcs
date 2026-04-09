@@ -38,29 +38,29 @@ Die Organisation baut und pflegt die Werkzeuge, mit denen sich Menschen und Geme
 
 Rollen definieren Zuständigkeiten. Wer eine Rolle hat, entscheidet eigenständig in seinem Bereich. Für Entscheidungen, die mehrere Bereiche betreffen, gilt der RFC-Prozess (RFC-0001).
 
-### Architektur & Entwicklung
+### Architektur
 
-**Zuständigkeit:** Technische Architektur, Core-Entwicklung (Web of Trust, Real Life Stack), Code-Qualität, Sicherheit
+**Zuständigkeit:** Technische Richtung, Protokolle, Datenstrukturen, Sicherheit, Code-Review
 
 **Aktuell:** Anton
 
-### Vision & Outreach
+### Entwicklung & UX
 
-**Zuständigkeit:** Die größere Vision tragen, neue Menschen und Gemeinschaften einladen, Brücken bauen zu bestehenden Bewegungen, Kommunikation nach außen
+**Zuständigkeit:** App-Entwicklung, Interface-Design, Nutzererfahrung, Mobile
 
-**Aktuell:** Timo
+**Aktuell:** Sebastian
 
-### Prozesse & Infrastruktur
+### Infrastruktur & Qualität
 
-**Zuständigkeit:** CI/CD, Metriken, Logging, Integrationstests, Server-Infrastruktur
+**Zuständigkeit:** Server, CI/CD, Testing, Metriken, Logging, Releases
 
 **Aktuell:** Tillmann
 
-### UX & Mobile
+### Förderung
 
-**Zuständigkeit:** Benutzererfahrung, Mobile Apps, Interface-Design, Nutzerforschung
+**Zuständigkeit:** Förderanträge, Stiftungskontakte, Mittelverwendung, Berichterstattung
 
-**Aktuell:** Sebastian
+**Aktuell:** *unbesetzt — wird gesucht*
 
 ## Rollen anpassen
 
@@ -89,5 +89,5 @@ Die Person bleibt Teil der Organisation — nur die Verantwortung wechselt.
 
 ## Offene Fragen
 
-- Soll es eine Rolle für Finanzen/Fundraising geben?
 - Ab welcher Teamgröße brauchen wir Kreise statt flacher Rollen?
+- Wer übernimmt die Rolle Förderung?
