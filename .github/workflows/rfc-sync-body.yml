@@ -20,13 +20,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const glob = require('glob');
 
-            // Finde die RFC-Datei im PR (nicht template.md)
-            const files = fs.readdirSync('rfcs')
-              .filter(f => f.endsWith('.md') && f !== 'template.md');
-
-            // Finde die Datei die in diesem PR geändert wurde
             const { data: prFiles } = await github.rest.pulls.listFiles({
               owner: context.repo.owner,
               repo: context.repo.repo,
