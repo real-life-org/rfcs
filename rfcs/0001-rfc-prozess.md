@@ -16,7 +16,7 @@ Als wachsendes Team brauchen wir einen Weg, um:
 - **Asynchron** zu arbeiten
 - **Nachvollziehbarkeit** zu gewährleisten — die Begründung hinter Entscheidungen bleibt erhalten
 - **Alle einzubeziehen** — jedes Teammitglied hat die Möglichkeit, Einwände und Ideen einzubringen
-- **Grundlage fuer KIs** — Das Repository soll als Grundlage fuer die Entscheidungsfindung von KIs sein 
+- **Grundlage für KIs** — KIs im Team (wie Eli) können RFCs lesen und Entscheidungen im Kontext der Organisation einordnen
 
 ## Vorschlag
 
@@ -42,7 +42,7 @@ Kein RFC nötig für:
 
 ### Wer darf RFCs einreichen?
 
-Jedes Teammitglied.
+Jedes Mitglied der Organisation.
 
 ### Ablauf
 
@@ -51,6 +51,10 @@ Jedes Teammitglied.
 3. **Review-Phase:** Das Team hat **7 Tage** Zeit, den RFC zu lesen und zu kommentieren
 4. **Entscheidung:** Nach Ablauf der Review-Phase wird nach dem Konsent-Prinzip entschieden
 5. **Abschluss:** Merge = Angenommen, Close = Abgelehnt (mit Begründung)
+
+**Wer merged:** Der Autor, nach Ablauf der 7 Tage, wenn kein schwerwiegender Einwand offen steht.
+
+**Dringende Entscheidungen:** Bei begründeter Dringlichkeit kann die Review-Phase auf 48 Stunden verkürzt werden. Die Begründung muss im PR stehen.
 
 ### Konsent-Prinzip
 
@@ -99,10 +103,8 @@ Wir nutzen PRs, weil sie Diskussion, Dokument und Entscheidung an einem Ort vere
 
 ## Ausblick
 
-Dieser Prozess ist für den aktuellen Stand der Organisation gedacht — ein kleines Kern-Team. Mit wachsendem Netzwerk wird er sich weiterentwickeln: Kreise mit eigener Governance, föderierte Entscheidungsprozesse über Gemeinschaften hinweg. Die Grundprinzipien — Konsent, Transparenz, Asynchronität — bleiben.
+Dieser Prozess ist für den aktuellen Stand der Organisation gedacht — ein kleines Kern-Team. Mit wachsender Organisation wird er sich weiterentwickeln — z.B. durch Kreise mit eigener Governance. Die Grundprinzipien — Konsent, Transparenz, Asynchronität — bleiben.
 
 ## Offene Fragen
 
 - Brauchen wir eine Mindestanzahl an Reviews, damit ein RFC angenommen werden kann?
-- Soll es eine Rolle geben, die den Merge durchführt (z.B. der Autor nach Ablauf der Frist)?
-- Wie gehen wir mit dringenden Entscheidungen um, die nicht 7 Tage warten können?
