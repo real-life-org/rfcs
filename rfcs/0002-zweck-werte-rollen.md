@@ -1,100 +1,113 @@
-# RFC-0002: Zweck, Werte und erste Rollen
+# RFC-0002: Zweck, Werte und Rollen der Organisation
 
 - **Autor:** Anton Tranélis
 - **Datum:** 2026-04-04
+- **Aktualisiert:** 2026-04-10
 - **Status:** In Review
 
 ## Zusammenfassung
 
-Dieses Dokument beschreibt den Zweck der Real Life Organisation, ihre Werte und die ersten Rollen. Es macht explizit, was bisher implizit gelebt wird — damit neue Menschen andocken können.
+Dieses Dokument beschreibt den Zweck der Real Life **Organisation**, ihre Werte und die Rollen innerhalb des Kernteams. Es grenzt die Organisation klar vom Netzwerk ab.
 
 ## Motivation
 
-Real Life ist bisher ein loses Netzwerk um eine gemeinsame Vision. Es gibt keine klare Beschreibung, wofür die Organisation steht, wie sie arbeitet und welche Rollen es gibt. Das macht es schwer für neue Menschen, sich einzubringen. Dieses Dokument schafft Klarheit, ohne Bürokratie zu erzeugen.
+Real Life besteht aus zwei Ebenen:
+
+- Die **Organisation** (real-life.org) — das Kernteam, das Werkzeuge baut und Infrastruktur pflegt
+- Das **Netzwerk** (real-life.network) — alle Menschen und Initiativen, die sich verbinden
+
+Das Netzwerk ist dezentral, gehört niemandem und funktioniert ohne feste Rollen (siehe [netzwerk.md](https://github.com/real-life-org/docs/blob/main/netzwerk.md)). Die Organisation dagegen braucht klare Zuständigkeiten: Wenn ein Bug im Core ist, muss klar sein, wer entscheidet. Wenn eine Architekturentscheidung ansteht, muss klar sein, wer sie trifft.
+
+Dieses Dokument definiert, wie die Organisation arbeitet — nicht wie das Netzwerk funktioniert.
 
 ## Zweck
 
-Real Life baut Werkzeuge und Strukturen für selbstbestimmtes, verbundenes Leben — im Einklang mit Mensch und Natur.
+Die Organisation dient dem Netzwerk. Sie baut und pflegt die Werkzeuge, mit denen sich Menschen und Gemeinschaften verbinden, organisieren und Ressourcen teilen.
 
-Wir glauben, dass die Transformation zu einer nachhaltigen Gesellschaft von unten wächst: durch echte Begegnungen, lokale Verantwortung und Gemeinschaften, die vorleben, was möglich ist. Technologie dient dabei als Werkzeug — dezentral, verschlüsselt, in den Händen der Menschen.
+Konkret:
+- **Web of Trust** — dezentrales Vertrauensprotokoll
+- **Real Life Stack** — modulare Komponenten für Gemeinschafts-Apps
+- **Real Life Map** — Karte zur Sichtbarmachung lokaler Initiativen
+- **Server-Infrastruktur** — Relay, Vault, Profiles, F-Droid Repo
+
+Die Organisation kontrolliert nicht das Netzwerk. Sie stellt Infrastruktur zur Verfügung, die jede Gemeinschaft frei nutzen, anpassen und selbst betreiben kann.
 
 ## Werte
 
-### Dezentralität
+**Open Source.** Alles was wir bauen ist offen — Code, Entscheidungen, Dokumentation.
 
-Keine zentrale Instanz kontrolliert das Netzwerk — weder technisch noch organisatorisch. Entscheidungen werden dort getroffen, wo die Verantwortung liegt.
+**Souveränität.** Menschen und Gemeinschaften behalten die Kontrolle über ihre Daten, ihre Werkzeuge und ihre Entscheidungen.
 
-### Vertrauen durch Begegnung
+**Dezentralität.** Keine zentrale Instanz kontrolliert das System — weder technisch noch organisatorisch.
 
-Vertrauen wächst durch echte Beziehungen, nicht durch Plattform-Verifizierung. Das Web of Trust bildet dieses Prinzip technisch ab.
+**Vertrauen durch Begegnung.** Mitgliedschaft in der Organisation setzt echte persönliche Begegnung voraus (siehe RFC-0003).
 
-### Transparenz
-
-Entscheidungen, Code und Finanzen sind offen. Wer betroffen ist, kann mitgestalten.
-
-### Organisches Wachstum
-
-Wir wachsen durch echten Mehrwert, nicht durch Marketing. Jede Gemeinschaft, die sich anschließt, tut das freiwillig und aus eigenem Antrieb.
-
-### Souveränität
-
-Menschen und Gemeinschaften behalten die Kontrolle über ihre Daten, ihre Werkzeuge und ihre Entscheidungen.
+**Sicherheit.** Alle Daten, die das Gerät verlassen, sind verschlüsselt und signiert.
 
 ## Rollen
 
-Rollen beschreiben Verantwortungsbereiche, keine Hierarchie. Jede Rolle kann von einer oder mehreren Personen ausgefüllt werden.
+Rollen definieren klare Zuständigkeiten innerhalb der Organisation. Wer eine Rolle hat, entscheidet eigenständig in seinem Bereich. Für Entscheidungen, die mehrere Bereiche betreffen, gilt der RFC-Prozess (siehe RFC-0001).
+
+Rollen sind keine Hierarchie. Sie beschreiben, wer wofür Verantwortung übernimmt.
 
 ### Architektur & Entwicklung
 
-**Verantwortung:** Technische Architektur, Core-Entwicklung (Web of Trust, Real Life Stack), Code-Qualität
+**Zuständigkeit:** Technische Architektur, Core-Entwicklung (Web of Trust, Real Life Stack), Code-Qualität, Sicherheit
 
 **Aktuell:** Anton
 
 ### Vision & Outreach
 
-**Verantwortung:** Die größere Vision tragen, neue Menschen und Gemeinschaften einladen, Brücken bauen zu bestehenden Bewegungen
+**Zuständigkeit:** Die größere Vision tragen, neue Menschen und Gemeinschaften einladen, Brücken bauen zu bestehenden Bewegungen, Kommunikation nach außen
 
 **Aktuell:** Timo
 
 ### Prozesse & Infrastruktur
 
-**Verantwortung:** Prozesse, Metriken, Logging, Integrationstests, CI/CD
+**Zuständigkeit:** CI/CD, Metriken, Logging, Integrationstests, Server-Infrastruktur
 
 **Aktuell:** Tillmann
 
 ### UX & Mobile
 
-**Verantwortung:** Benutzererfahrung, Mobile Apps, Interface-Design
+**Zuständigkeit:** Benutzererfahrung, Mobile Apps, Interface-Design, Nutzerforschung
 
 **Aktuell:** Sebastian
 
-## Wie Rollen funktionieren
+## Rollen vs. Netzwerk-Focalization
 
-### Zuständigkeit
+In der Organisation gibt es **Rollen** mit klarer Zuständigkeit und Entscheidungsgewalt.
 
-Wenn eine Aufgabe reinkommt, ist durch die Rollen klar, wer zuständig ist. Die zuständige Person entscheidet eigenständig, wie und wann sie die Aufgabe umsetzt. Für kreisübergreifende Entscheidungen gilt der RFC-Prozess (siehe RFC-0001).
+Im Netzwerk gibt es **keine festen Rollen**. Stattdessen bringt jeder das ein, was ihm liegt — Begegnung, Verbindung, Sichtbarkeit, Logistik, Werkzeuge, Wachstum. Diese Tätigkeiten sind in [netzwerk.md](https://github.com/real-life-org/docs/blob/main/netzwerk.md) und im [Handbuch](https://github.com/real-life-org/docs/blob/main/handbuch.md) beschrieben.
 
-### Rollen anpassen
+Die Menschen in der Organisation sind gleichzeitig Teil des Netzwerks und bringen sich dort ein wie alle anderen auch — aber ihre Org-Rolle gibt ihnen zusätzlich Entscheidungsgewalt über technische und strategische Fragen.
+
+## Rollen anpassen
 
 Rollen werden per RFC angepasst, wenn:
 
 - **Zu groß** — Eine Person schafft es nicht allein → Rolle aufteilen oder zweite Person dazu
 - **Zu klein** — Kaum noch Aufgaben → mit einer anderen Rolle zusammenlegen
 - **Falsch geschnitten** — Aufgaben landen regelmäßig bei der falschen Rolle → Verantwortungsbereiche neu schneiden
-- **Neue Verantwortung entsteht** — z.B. Fundraising, Community-Management → neue Rolle schaffen
+- **Neue Verantwortung entsteht** → neue Rolle schaffen
 
-### Rollen neu besetzen
+## Rollen neu besetzen
 
 Die Rolle gehört nicht der Person. Wenn eine Verantwortung dauerhaft nicht wahrgenommen wird:
 
 1. **Gespräch** — Das Team spricht die Spannung offen an
-2. **Klärung** — Ist die Rolle zu groß? Fehlt Unterstützung? Passt sie nicht zur Person? Gemeinsam nach einer Lösung suchen
+2. **Klärung** — Ist die Rolle zu groß? Fehlt Unterstützung? Gemeinsam eine Lösung suchen
 3. **Neubesetzung** — Wenn sich nichts ändert, wird die Rolle per RFC neu vergeben
 
-Das ist kein Rausschmiss. Die Person bleibt Teil der Organisation — nur die Verantwortung wechselt.
+Die Person bleibt Teil der Organisation — nur die Verantwortung wechselt.
+
+## Alternativen
+
+**Keine formalen Rollen, alles fluid:** Funktioniert im Netzwerk, aber nicht für die Kernentwicklung. Wenn niemand klar zuständig ist, bleiben Bugs liegen und Architekturentscheidungen werden nicht getroffen.
+
+**Holokratie mit Kreisen:** Für die aktuelle Teamgröße (4 Personen) zu viel Overhead. Kann später eingeführt werden, wenn die Organisation wächst.
 
 ## Offene Fragen
 
-- Brauchen wir eine explizite Beschreibung, wie man Teil der Organisation wird?
 - Soll es eine Rolle für Finanzen/Fundraising geben?
-- Wie formalisieren wir die Beziehung zu Gemeinschaften, die die Tools nutzen?
+- Ab welcher Teamgröße brauchen wir Kreise statt flacher Rollen?
