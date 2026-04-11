@@ -123,15 +123,21 @@ Secrets (API-Keys, Passwörter, Zertifikate) werden mit sops-nix verschlüsselt 
 
 ### 6. Caddy als Reverse Proxy
 
-Caddy als zentraler Reverse Proxy mit automatischem SSL via Let's Encrypt. Deklarativ in der NixOS-Config, kein manuelles Zertifikatsmanagement.
+Caddy als zentraler Reverse Proxy mit automatischem SSL via Let's Encrypt. Deklarativ in der NixOS-Config, kein manuelles Zertifikatsmanagement. Für dynamisches Routing von Docker-Containern wird caddy-docker-proxy eingesetzt — neue Services registrieren sich über Docker-Labels, ohne dass die NixOS-Config geändert werden muss.
 
-### 7. Docker für Flexibilität
+### 7. Docker + Watchtower für App-Deployment
 
-Docker bleibt auf allen Servern aktiviert für ad-hoc-Tools und Services, die (noch) kein NixOS-Modul haben. Regel: Was dauerhaft läuft, wird zum NixOS-Modul.
+Docker bleibt auf allen Servern aktiviert. Watchtower überwacht laufende Container und pullt automatisch neue Images aus der GitHub Container Registry (ghcr.io). Der Deployment-Workflow:
+
+1. Entwickler pusht Code auf GitHub
+2. GitHub Action baut Docker Image und pushed zu ghcr.io
+3. Watchtower auf dem Server erkennt neues Image und restartet den Container
+
+Kein SSH-Zugang für GitHub nötig, kein Webhook, komplett pull-basiert. Regel: Was dauerhaft als Kern-Infrastruktur läuft, wird zum NixOS-Modul. Docker + Watchtower ist für Application-Deployments.
 
 ### 8. GitHub Actions Integration
 
-- **WoT Services:** Push auf main → GitHub Action baut → Server pullt neues Image oder triggert rebuild
+- **App-Deployments:** Push auf main → GitHub Action baut Image → pushed zu ghcr.io → Watchtower pullt und restartet
 - **Static Sites:** Push → GitHub Pages oder rsync auf eigenen Server via Caddy
 
 ### 9. Monitoring & Alerting
