@@ -46,7 +46,7 @@ infrastructure/
 ├── flake.nix
 ├── modules/
 │   ├── base.nix              # SSH-Hardening, Firewall, Users, Locale
-│   ├── caddy.nix             # Reverse Proxy + automatisches SSL
+│   ├── traefik.nix            # Reverse Proxy + automatisches SSL
 │   ├── docker.nix            # Docker für ad-hoc-Tools
 │   ├── monitoring.nix        # Uptime-Checks + Alerts
 │   ├── wot-relay.nix         # WoT Relay als NixOS-Service
@@ -121,9 +121,9 @@ Secrets (API-Keys, Passwörter, Zertifikate) werden mit sops-nix verschlüsselt 
 - Pull-basiert: systemd-Timer pullt das Repo und rebuilt automatisch
 - Oder manuell: `nixos-rebuild switch --flake .`
 
-### 6. Caddy als Reverse Proxy
+### 6. Traefik als Reverse Proxy
 
-Caddy als zentraler Reverse Proxy mit automatischem SSL via Let's Encrypt. Deklarativ in der NixOS-Config, kein manuelles Zertifikatsmanagement. Für dynamisches Routing von Docker-Containern wird caddy-docker-proxy eingesetzt — neue Services registrieren sich über Docker-Labels, ohne dass die NixOS-Config geändert werden muss.
+Traefik als Reverse Proxy mit automatischem SSL via Let's Encrypt. Docker-Label-Routing ist Traefiks Kernfeature — neue Container registrieren sich über Labels, ohne dass die NixOS-Config geändert werden muss. Kein Plugin, kein extra Netzwerk nötig.
 
 ### 7. Docker + Watchtower für App-Deployment
 
@@ -178,6 +178,6 @@ Pragmatisch, aber: nur Services sind beschrieben, das Host-OS bleibt undokumenti
 
 - **Migration:** Wir starten mit einem Pilotserver, um NixOS und den Workflow zu validieren, bevor bestehende Server migriert werden. Zeitplan und Reihenfolge der weiteren Migration sind offen.
 - **NixOS-Installation bei Hosting-Providern:** Nicht alle Hoster bieten NixOS an. `nixos-infect` (Ubuntu → NixOS) oder eigene ISO als Installationsweg.
-- **Caddy vs. Nginx:** Caddy ist einfacher und hat automatisches SSL. Nginx ist verbreiteter. Gibt es Gründe, bei Nginx zu bleiben?
+- **Reverse Proxy:** Traefik wurde gewählt wegen nativem Docker-Label-Routing. Caddy wurde evaluiert, benötigt aber ein Community-Plugin für Docker-Integration.
 - **Monitoring-Stack:** Einfache HTTP-Checks + Telegram, oder vollständigeres Setup (Prometheus + Grafana)?
 - **Domain-Ownership:** Sollten Domains auf die Org übertragen werden, um den Busfaktor zu reduzieren?
