@@ -144,7 +144,15 @@ Kein SSH-Zugang für GitHub nötig, kein Webhook, komplett pull-basiert. Regel: 
 
 Uptime-Checks für alle kritischen Services. Benachrichtigung an mehrere Team-Mitglieder bei Ausfall.
 
-### 10. Eli als Infrastructure-Maintainer
+### 10. Hardware-Keys (Nitrokey/YubiKey) als Standard für SSH
+
+Alle Team-Mitglieder nutzen Hardware-Security-Keys (z.B. Nitrokey 3, YubiKey) für SSH-Zugang. Der private Schlüssel existiert nur auf dem physischen Gerät und kann nicht extrahiert werden.
+
+Hintergrund: Jeder im Team arbeitet mit AI-Tools (Claude Code, Cursor, etc.), die als lokaler User laufen und grundsätzlich Zugriff auf alle Dateien haben — inklusive SSH Private Keys. Ein Hardware-Key schützt davor: Selbst wenn ein Tool oder eine kompromittierte Dependency den Key lesen will, gibt es keine Datei mit Schlüsselmaterial. Jede SSH-Verbindung erfordert physische Berührung des Sticks.
+
+Key-Typ: `ed25519-sk` (FIDO2). Software-basierte SSH-Keys auf Dateibasis werden für Server-Zugänge nicht akzeptiert.
+
+### 11. Eli als Infrastructure-Maintainer
 
 Eli schreibt und pflegt die NixOS-Konfigurationen. Die Lernkurve von Nix entfällt als Hindernis, weil Eli Nix-Code lesen, schreiben und debuggen kann. Das Team reviewed die Änderungen in Git-Diffs.
 
