@@ -18,3 +18,4 @@ Transparente Entscheidungsfindung nach dem Konsent-Prinzip.
 | 0003 | Mitgliedschaft in der Real Life Organisation | Draft | [#4](https://github.com/real-life-org/rfcs/pull/4) |
 | 0004 | Push Notifications mit UnifiedPush | In Review | [#5](https://github.com/real-life-org/rfcs/pull/5) |
 | 0005 | Cross-Space Items | Draft | [#6](https://github.com/real-life-org/rfcs/pull/6) |
+| 0006 | NixOS Infrastructure | Draft | TBD |
