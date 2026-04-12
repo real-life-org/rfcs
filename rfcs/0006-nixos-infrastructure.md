@@ -117,8 +117,12 @@ Einfach zu bedienen, Web-UI. Aber: zusätzliche Angriffsfläche, lösen nur Appl
 
 Pragmatisch, aber: nur Services sind beschrieben, das Host-OS bleibt undokumentiert. Kein Rollback auf OS-Ebene, keine Reproduzierbarkeit für neue Server.
 
+## Stand
+
+Dieses Setup wurde bereits beispielhaft für Timos Server umgesetzt. Der Server läuft mit NixOS, Traefik und Watchtower, die Konfiguration liegt im `real-life-org/infrastructure` Repo, und der End-to-End-Deploy-Workflow (git push → GitHub Action → ghcr.io → Watchtower → live) funktioniert.
+
 ## Offene Fragen
 
-- **Migration:** Wir starten mit einem Pilotserver, um den Workflow zu validieren, bevor bestehende Server migriert werden. Zeitplan und Reihenfolge der weiteren Migration sind offen.
+- **Migration:** Zeitplan und Reihenfolge für die Migration bestehender Server sind offen.
 - **Monitoring-Stack:** Einfache HTTP-Checks + Telegram, oder vollständigeres Setup (Prometheus + Grafana)?
 - **Domain-Ownership:** Sollten Domains auf die Org übertragen werden, um den Busfaktor zu reduzieren?
