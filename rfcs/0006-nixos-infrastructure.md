@@ -75,6 +75,8 @@ Secrets (API-Keys, Passwörter, Zertifikate) werden verschlüsselt im Repository
 - Pull-basiert: Server pullt das Repo und rebuilt automatisch
 - Oder manuell angestoßen
 
+Eli schreibt und pflegt die Server-Konfigurationen. Das Team reviewed die Änderungen in Git-Diffs, ohne die Details der Konfigurationssprache kennen zu müssen.
+
 ### 5. Traefik als Reverse Proxy
 
 Traefik als Reverse Proxy mit automatischem SSL via Let's Encrypt. Neue Docker-Container registrieren sich über Labels — kein manuelles Routing nötig.
@@ -98,10 +100,6 @@ Hintergrund: Jeder im Team arbeitet mit AI-Tools, die als lokaler User laufen un
 ### 8. Monitoring & Alerting
 
 Uptime-Checks für alle kritischen Services. Benachrichtigung an mehrere Team-Mitglieder bei Ausfall.
-
-### 9. Eli als Infrastructure-Maintainer
-
-Eli schreibt und pflegt die Server-Konfigurationen. Das Team reviewed die Änderungen in Git-Diffs, ohne die Details der Konfigurationssprache kennen zu müssen.
 
 ## Alternativen
 
