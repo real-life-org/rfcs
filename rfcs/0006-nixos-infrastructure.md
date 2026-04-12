@@ -1,4 +1,4 @@
-# RFC-0006: NixOS Infrastructure — Gemeinschaftlich getragene Server-Infrastruktur
+# RFC-0006: Gemeinschaftlich getragene Server-Infrastruktur
 
 - **Autor:** Anton Tranelis
 - **Datum:** 2026-04-11
@@ -6,7 +6,7 @@
 
 ## Zusammenfassung
 
-Wir stellen unsere Server-Infrastruktur auf NixOS um und verwalten alle Konfigurationen deklarativ in einem zentralen Git-Repository (`real-life-org/infrastructure`). Eli übernimmt das Schreiben und Pflegen der NixOS-Konfigurationen, das Team reviewed und deployed. Docker bleibt für ad-hoc-Tools verfügbar. Es wird kein Web-basiertes Management-Panel eingesetzt — der Zugang erfolgt ausschließlich über SSH und Git.
+Wir bauen eine Server-Infrastruktur auf, die gemeinschaftlich getragen, vollständig dokumentiert und reproduzierbar ist. Jede Server-Konfiguration liegt als Code in Git — transparent, versioniert, von mehreren Personen wartbar. Neue Server oder Community-Nodes lassen sich aus diesem Code aufsetzen. Es wird kein Web-basiertes Management-Panel eingesetzt — der Zugang erfolgt über SSH und Git.
 
 ## Motivation
 
@@ -28,133 +28,80 @@ Web-basierte Management-Panels stellen eine zusätzliche Angriffsfläche dar. F�
 
 ## Vorschlag
 
-### 1. NixOS als Betriebssystem auf allen Servern
+### 1. Infrastructure as Code
 
-Jeder Server läuft mit NixOS. Die gesamte Konfiguration — vom Kernel über Firewall und Users bis zu den Services — ist deklarativ in `.nix`-Dateien beschrieben.
+Jede Server-Konfiguration — von Firewall und Users bis zu den Services — ist deklarativ als Code beschrieben und in Git versioniert. Als Werkzeug setzen wir NixOS ein, weil es den gesamten Server-Zustand deklarativ beschreibt und atomare Rollbacks ermöglicht.
 
 - Die Konfiguration *ist* die Dokumentation
 - Atomare Rollbacks bei fehlerhaften Änderungen
 - Reproduzierbar: gleiche Config = gleicher Server
-- Kein Web-Panel = keine Web-Angriffsfläche
 
 ### 2. Zentrales Infrastructure-Repository
 
-Repository: `real-life-org/infrastructure`
+Alle Server-Konfigurationen und wiederverwendbare Module leben in einem gemeinsamen Repository: `real-life-org/infrastructure`
 
 ```
 infrastructure/
 ├── flake.nix
 ├── modules/
 │   ├── base.nix              # SSH-Hardening, Firewall, Users, Locale
-│   ├── traefik.nix            # Reverse Proxy + automatisches SSL
-│   ├── docker.nix            # Docker für ad-hoc-Tools
+│   ├── traefik.nix           # Reverse Proxy + automatisches SSL
+│   ├── docker.nix            # Docker + Watchtower für App-Deployment
 │   ├── monitoring.nix        # Uptime-Checks + Alerts
-│   ├── wot-relay.nix         # WoT Relay als NixOS-Service
-│   ├── wot-vault.nix         # WoT Vault als NixOS-Service
-│   ├── wot-profiles.nix      # WoT Profiles als NixOS-Service
+│   ├── wot-relay.nix         # WoT Relay
+│   ├── wot-vault.nix         # WoT Vault
+│   ├── wot-profiles.nix      # WoT Profiles
 │   ├── ipfs.nix              # IPFS/Kubo Node
 │   └── eli.nix               # Eli Services
 ├── hosts/
 │   ├── server-a/default.nix
 │   └── server-b/default.nix
-└── secrets/                  # sops-nix verschlüsselt
+└── secrets/                  # Verschlüsselt (sops-nix)
 ```
 
-Jeder Host importiert die Module, die er braucht:
+Jeder Host importiert die Module, die er braucht. Neuer Server? Neuen Ordner unter `hosts/`, Module auswählen, deployen.
 
-```nix
-# hosts/server-a/default.nix
-{ ... }:
-{
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/base.nix
-    ../../modules/caddy.nix
-    ../../modules/wot-relay.nix
-    ../../modules/wot-vault.nix
-    ../../modules/ipfs.nix
-  ];
+### 3. Secrets Management
 
-  networking.hostName = "server-a";
+Secrets (API-Keys, Passwörter, Zertifikate) werden verschlüsselt im Repository gespeichert (sops-nix). Jeder Maintainer und jeder Server hat einen eigenen Schlüssel. So ist steuerbar, wer welche Secrets entschlüsseln kann.
 
-  services.wot-relay = {
-    enable = true;
-    domain = "relay.utopia-lab.org";
-  };
-}
-```
-
-### 3. Getrennte Repos für eigenständige Server
-
-Team-Mitglieder, die volle Kontrolle über ihren eigenen Server haben sollen, aber keinen Zugriff auf die Kern-Infrastruktur brauchen, betreiben ein eigenes Repo und importieren die gemeinsamen Module als Flake-Input:
-
-```nix
-# eigenes-repo/flake.nix
-{
-  inputs.infrastructure.url = "github:real-life-org/infrastructure";
-
-  outputs = { infrastructure, ... }: {
-    nixosConfigurations.mein-server = {
-      modules = [
-        infrastructure.nixosModules.base
-        infrastructure.nixosModules.docker
-        ./configuration.nix
-      ];
-    };
-  };
-}
-```
-
-SSH-Keys und Secrets sind pro Server getrennt — wer auf seinen Server Zugang hat, hat keinen Zugang zu anderen.
-
-### 4. Secrets Management mit sops-nix
-
-Secrets (API-Keys, Passwörter, Zertifikate) werden mit sops-nix verschlüsselt im Repository gespeichert. Jeder Maintainer und jeder Server hat einen eigenen age-Key. Über `.sops.yaml` wird gesteuert, wer welche Secrets entschlüsseln kann.
-
-### 5. Deployment
+### 4. Deployment
 
 **Kern-Infrastruktur (kontrolliert):**
-- Änderung → PR → Review → Merge → `colmena apply`
+- Änderung → PR → Review → Merge → Deploy
 - Nur Maintainer können deployen
 
 **Eigenständige Server:**
-- Pull-basiert: systemd-Timer pullt das Repo und rebuilt automatisch
-- Oder manuell: `nixos-rebuild switch --flake .`
+- Pull-basiert: Server pullt das Repo und rebuilt automatisch
+- Oder manuell angestoßen
 
-### 6. Traefik als Reverse Proxy
+### 5. Traefik als Reverse Proxy
 
-Traefik als Reverse Proxy mit automatischem SSL via Let's Encrypt. Docker-Label-Routing ist Traefiks Kernfeature — neue Container registrieren sich über Labels, ohne dass die NixOS-Config geändert werden muss. Kein Plugin, kein extra Netzwerk nötig.
+Traefik als Reverse Proxy mit automatischem SSL via Let's Encrypt. Neue Docker-Container registrieren sich über Labels — kein manuelles Routing nötig.
 
-### 7. Docker + Watchtower für App-Deployment
+### 6. App-Deployment via GitHub Actions + Watchtower
 
-Docker bleibt auf allen Servern aktiviert. Watchtower überwacht laufende Container und pullt automatisch neue Images aus der GitHub Container Registry (ghcr.io). Der Deployment-Workflow:
+Docker bleibt auf allen Servern für Application-Deployments. Der Workflow:
 
 1. Entwickler pusht Code auf GitHub
 2. GitHub Action baut Docker Image und pushed zu ghcr.io
-3. Watchtower auf dem Server erkennt neues Image und restartet den Container
+3. Watchtower auf dem Server erkennt das neue Image und aktualisiert den Container
 
-Kein SSH-Zugang für GitHub nötig, kein Webhook, komplett pull-basiert. Regel: Was dauerhaft als Kern-Infrastruktur läuft, wird zum NixOS-Modul. Docker + Watchtower ist für Application-Deployments.
+Komplett pull-basiert, kein SSH-Zugang für CI nötig.
 
-### 8. GitHub Actions Integration
+### 7. Hardware-Keys für privilegierte Zugänge
 
-- **App-Deployments:** Push auf main → GitHub Action baut Image → pushed zu ghcr.io → Watchtower pullt und restartet
-- **Static Sites:** Push → GitHub Pages oder rsync auf eigenen Server via Caddy
+Root-Zugriff auf Server erfordert einen Hardware-Security-Key (z.B. Nitrokey 3, YubiKey). Der private Schlüssel existiert nur auf dem physischen Gerät und kann nicht extrahiert werden. Jede Verbindung erfordert physische Berührung des Sticks.
 
-### 9. Monitoring & Alerting
+Hintergrund: Jeder im Team arbeitet mit AI-Tools, die als lokaler User laufen und grundsätzlich Zugriff auf alle Dateien haben — inklusive SSH Private Keys. Ein Hardware-Key schützt das Schlüsselmaterial für privilegierte Zugänge. Für eingeschränkte User (z.B. nur Docker-Rechte, kein sudo) ist ein Software-Key ausreichend.
+
+### 8. Monitoring & Alerting
 
 Uptime-Checks für alle kritischen Services. Benachrichtigung an mehrere Team-Mitglieder bei Ausfall.
 
-### 10. Hardware-Keys (Nitrokey/YubiKey) als Standard für SSH
+### 9. Eli als Infrastructure-Maintainer
 
-Alle Team-Mitglieder nutzen Hardware-Security-Keys (z.B. Nitrokey 3, YubiKey) für SSH-Zugang. Der private Schlüssel existiert nur auf dem physischen Gerät und kann nicht extrahiert werden.
-
-Hintergrund: Jeder im Team arbeitet mit AI-Tools (Claude Code, Cursor, etc.), die als lokaler User laufen und grundsätzlich Zugriff auf alle Dateien haben — inklusive SSH Private Keys. Ein Hardware-Key schützt davor: Selbst wenn ein Tool oder eine kompromittierte Dependency den Key lesen will, gibt es keine Datei mit Schlüsselmaterial. Jede SSH-Verbindung erfordert physische Berührung des Sticks.
-
-Key-Typ: `ed25519-sk` (FIDO2). Software-basierte SSH-Keys auf Dateibasis werden für Server-Zugänge nicht akzeptiert.
-
-### 11. Eli als Infrastructure-Maintainer
-
-Eli schreibt und pflegt die NixOS-Konfigurationen. Die Lernkurve von Nix entfällt als Hindernis, weil Eli Nix-Code lesen, schreiben und debuggen kann. Das Team reviewed die Änderungen in Git-Diffs.
+Eli schreibt und pflegt die Server-Konfigurationen. Das Team reviewed die Änderungen in Git-Diffs, ohne die Details der Konfigurationssprache kennen zu müssen.
 
 ## Alternativen
 
@@ -166,18 +113,12 @@ Playbooks in YAML, idempotent, Git-versionierbar. Ansible beschreibt jedoch Schr
 
 Einfach zu bedienen, Web-UI. Aber: zusätzliche Angriffsfläche, lösen nur Application-Deployment statt OS-Level-Konfiguration.
 
-### Dokku
-
-CLI-basiertes Mini-Heroku. Gutes Security-Profil, keine bekannten CVEs. Löst aber nur Application-Deployment, nicht die OS-Ebene. Könnte ergänzend eingesetzt werden.
-
 ### Docker Compose + Git (Status Quo)
 
 Pragmatisch, aber: nur Services sind beschrieben, das Host-OS bleibt undokumentiert. Kein Rollback auf OS-Ebene, keine Reproduzierbarkeit für neue Server.
 
 ## Offene Fragen
 
-- **Migration:** Wir starten mit einem Pilotserver, um NixOS und den Workflow zu validieren, bevor bestehende Server migriert werden. Zeitplan und Reihenfolge der weiteren Migration sind offen.
-- **NixOS-Installation bei Hosting-Providern:** Nicht alle Hoster bieten NixOS an. `nixos-infect` (Ubuntu → NixOS) oder eigene ISO als Installationsweg.
-- **Reverse Proxy:** Traefik wurde gewählt wegen nativem Docker-Label-Routing. Caddy wurde evaluiert, benötigt aber ein Community-Plugin für Docker-Integration.
+- **Migration:** Wir starten mit einem Pilotserver, um den Workflow zu validieren, bevor bestehende Server migriert werden. Zeitplan und Reihenfolge der weiteren Migration sind offen.
 - **Monitoring-Stack:** Einfache HTTP-Checks + Telegram, oder vollständigeres Setup (Prometheus + Grafana)?
 - **Domain-Ownership:** Sollten Domains auf die Org übertragen werden, um den Busfaktor zu reduzieren?
