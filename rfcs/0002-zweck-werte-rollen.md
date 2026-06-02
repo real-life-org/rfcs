@@ -63,9 +63,15 @@ Rollen definieren Zuständigkeiten. Wer eine Rolle hat, entscheidet eigenständi
 
 **Hinweis zu den Visionen:** Vision ist eine geteilte Aufgabe des gesamten Teams. Visionen, die aus dieser Rolle eingebracht werden, sind zunächst Entwürfe. Bevor sie nach außen verbindlich vertreten werden (Pitches, Partner-Gespräche, öffentliche Setzungen), werden sie im Team konsentbasiert verfeinert.
 
+### Infrastruktur und Qualität
+
+**Zuständigkeit:** Server, CI/CD, Testing, Metriken, Logging, Releases.
+
+**Aktuell:** *unbesetzt — wird gesucht*
+
 ### Förderung
 
-**Zuständigkeit:** Förderanträge, Stiftungskontakte, Mittelverwendung, Berichterstattung
+**Zuständigkeit:** Förderanträge, Stiftungskontakte, Mittelverwendung, Berichterstattung.
 
 **Aktuell:** *unbesetzt — wird gesucht*
 
@@ -97,6 +103,6 @@ Die Person bleibt Teil der Organisation — nur die Verantwortung wechselt.
 ## Offene Fragen
 
 - Ab welcher Teamgröße brauchen wir Kreise statt flacher Rollen?
+- Wer übernimmt die Rolle Infrastruktur und Qualität?
 - Wer übernimmt die Rolle Förderung?
-- Infrastruktur und Qualität (Server, CI/CD, Testing, Metriken, Logging, Releases) ist aktuell nicht als eigene Rolle abgebildet. Sobald sich jemand verbindlich für diesen Bereich engagieren möchte, wird die Rolle per RFC neu definiert.
 - Wann und in welcher Form wird die Organisation in eine gemeinnützige Trägerstruktur (Foundation/Stiftung) überführt?
