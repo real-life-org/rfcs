@@ -1,4 +1,4 @@
-# RFC-0006: Organisation und Netzwerk: Zweck, Werte und Verhältnis
+# RFC-0007: Organisation und Netzwerk: Zweck, Werte und Verhältnis
 
 - **Autor:** Anton Tranélis
 - **Datum:** 2026-06-02
