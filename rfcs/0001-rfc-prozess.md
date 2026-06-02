@@ -31,6 +31,7 @@ RFCs sind für Entscheidungen, die die Organisation als Ganzes betreffen:
 - Grundsatzentscheidungen — Vision, Werte, Prinzipien
 - Organisationsstruktur — Kreise, Rollen, Verantwortlichkeiten
 - Strategische Weichenstellungen — Ausrichtung, Partnerschaften, Finanzierung
+- Marken-Setzungen, Domain-Strategie und öffentlicher Außenauftritt
 - Technische Architektur — Protokolle, Standards, die mehrere Module betreffen
 - Prozesse — wie wir zusammenarbeiten
 
@@ -49,12 +50,13 @@ Jedes Mitglied der Organisation.
 1. **Schreiben:** Erstelle eine neue Datei `rfcs/XXXX-kurzer-name.md` nach dem [Template](template.md) auf einem eigenen Branch
 2. **PR öffnen:** Öffne einen Pull Request. Der PR ist der Ort für die Diskussion
 3. **Review-Phase:** Das Team hat **7 Tage** Zeit, den RFC zu lesen und zu kommentieren
-4. **Entscheidung:** Nach Ablauf der Review-Phase wird nach dem Konsent-Prinzip entschieden
-5. **Abschluss:** Merge = Angenommen, Close = Abgelehnt (mit Begründung)
+4. **Team-Termin:** Bevor ein RFC beschlossen wird, muss er in mindestens einem gemeinsamen Team-Termin unter vorheriger Ankündigung besprochen worden sein. Mitglieder, die nicht erscheinen, signalisieren keinen Einwand — der Termin findet trotzdem statt.
+5. **Entscheidung:** Nach Ablauf der Review-Phase und stattgefundenem Team-Termin wird nach dem Konsent-Prinzip entschieden
+6. **Abschluss:** Merge = Angenommen, Close = Abgelehnt (mit Begründung)
 
-**Wer merged:** Der Autor, nach Ablauf der 7 Tage, wenn kein schwerwiegender Einwand offen steht.
+**Wer merged:** Der Autor, nach Ablauf der 7 Tage und stattgefundenem Team-Termin, wenn kein schwerwiegender Einwand offen steht.
 
-**Dringende Entscheidungen:** Bei begründeter Dringlichkeit kann die Review-Phase auf 48 Stunden verkürzt werden. Die Begründung muss im PR stehen.
+**Dringende Entscheidungen:** Bei begründeter Dringlichkeit kann die Review-Phase auf 48 Stunden verkürzt werden. Der Team-Termin bleibt auch dann verpflichtend. Die Begründung muss im PR stehen.
 
 ### Konsent-Prinzip
 
@@ -62,6 +64,7 @@ Wir entscheiden nicht per Konsens ("sind alle dafür?"), sondern per Konsent ("h
 
 **Ein Vorschlag gilt als angenommen, wenn:**
 - Die Review-Phase abgelaufen ist
+- Der RFC in mindestens einem Team-Termin besprochen wurde
 - Kein schwerwiegender Einwand offen steht
 
 **Was ist ein schwerwiegender Einwand?**
@@ -107,4 +110,4 @@ Dieser Prozess ist für den aktuellen Stand der Organisation gedacht — ein kle
 
 ## Offene Fragen
 
-- Brauchen wir eine Mindestanzahl an Reviews, damit ein RFC angenommen werden kann?
+*(aktuell keine)*
