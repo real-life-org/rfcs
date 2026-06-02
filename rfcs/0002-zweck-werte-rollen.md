@@ -2,24 +2,28 @@
 
 - **Autor:** Anton Tranelis
 - **Datum:** 2026-04-04
-- **Aktualisiert:** 2026-04-10
+- **Aktualisiert:** 2026-06-02
 - **Status:** In Review
 
 ## Zusammenfassung
 
-Dieses Dokument beschreibt den Zweck der Real Life Organisation, ihre Werte und die Rollen innerhalb des Kernteams.
+Dieses Dokument beschreibt den Zweck der Real Life Organisation als Steward des Real Life Netzwerks, ihre Werte und die Rollen innerhalb des Kernteams.
 
 ## Motivation
 
-Die Organisation ist das Kernteam, das die Werkzeuge baut — im Unterschied zum [Netzwerk](https://github.com/real-life-org/docs/blob/main/netzwerk.md), das dezentral und ohne feste Rollen funktioniert. Die Organisation braucht klare Zuständigkeiten: Wenn ein Bug im Core ist, wenn ein Release ansteht, wenn ein Förderantrag eingereicht werden muss — es muss klar sein, wer sich darum kümmert.
+Die Organisation ist Steward des Real Life Netzwerks — sie entwickelt und pflegt die Werkzeuge, auf denen das Netzwerk wächst, und trägt es, bis es sich selbst tragen kann. Im Unterschied zum [Netzwerk](https://github.com/real-life-org/docs/blob/main/netzwerk.md) selbst, das dezentral und ohne feste Rollen funktioniert, braucht die Organisation klare Zuständigkeiten: Wenn ein Bug im Core ist, wenn ein Release ansteht, wenn eine Partnerschaft verhandelt wird, wenn ein Förderantrag eingereicht werden muss — es muss klar sein, wer sich darum kümmert.
 
 ## Zweck
 
-Die Organisation baut und pflegt die Werkzeuge, mit denen sich Menschen und Gemeinschaften verbinden, organisieren und Ressourcen teilen:
+Die Organisation trägt und entwickelt die Werkzeuge, mit denen sich Menschen und Gemeinschaften verbinden, organisieren und Ressourcen teilen:
 
 - **Web of Trust** — dezentrales Vertrauensprotokoll
+- **Real Life Network Protocol** — soziale Spezifikation des Netzwerks
 - **Real Life Stack** — modulare Komponenten für Gemeinschafts-Apps
+- **Real Life Game** — spielerische Schicht für reale Begegnung
 - **Server-Infrastruktur** — Relay, Vault, Profiles, F-Droid Repo
+
+Auf diesen Werkzeugen wächst das Real Life Netzwerk — eine Bewegung aus Communities, die sich ihrer Werkzeuge selbst bemächtigen.
 
 ## Werte
 
@@ -33,27 +37,31 @@ Die Organisation baut und pflegt die Werkzeuge, mit denen sich Menschen und Geme
 
 **Sicherheit.** Alle Daten, die das Gerät verlassen, sind verschlüsselt und signiert.
 
+**Steward-Haltung.** Die Organisation versteht sich als Treuhänderin des Netzwerks, nicht als Eigentümerin. Wir tragen, was wir gebaut haben, mit der Absicht, es weiterzugeben — an die Communities, die es nutzen, und langfristig an eine gemeinnützige Trägerstruktur.
+
 ## Rollen
 
 Rollen definieren Zuständigkeiten. Wer eine Rolle hat, entscheidet eigenständig in seinem Bereich. Für Entscheidungen, die mehrere Bereiche betreffen, gilt der RFC-Prozess (RFC-0001).
 
-### Architektur
+### Architektur und Spec
 
-**Zuständigkeit:** Technische Richtung, Protokolle, Datenstrukturen, Sicherheit, Code-Review
+**Zuständigkeit:** Technische Richtung, Protokolle, Datenstrukturen, Sicherheit, Code-Review. Verfassung normativer Spezifikationen (WoT-Spec, Real Life Network Protocol, RFCs) und konzeptionelle Außen-Dokumente.
 
 **Aktuell:** Anton
 
-### UX & Design
+### UX und Frontend
 
-**Zuständigkeit:** Interface-Design, Nutzererfahrung, Mobile, Nutzerforschung
+**Zuständigkeit:** Nutzererfahrung, Interface-Design, Frontend-Entwicklung, mobile Apps, Nutzerforschung.
 
 **Aktuell:** Sebastian
 
-### Infrastruktur & Qualität
+### Botschaft und Visionen
 
-**Zuständigkeit:** Server, CI/CD, Testing, Metriken, Logging, Releases
+**Zuständigkeit:** Botschaft der Organisation nach außen tragen — Beziehungen zu Partner-Organisationen, Stiftungen, Schulen, Festivals und der Macher-Szene pflegen. Pitch- und Outreach-Arbeit. Visionen entwickeln, wie sich die Werkzeuge der Organisation in realen Kontexten anwenden lassen.
 
-**Aktuell:** Tillmann
+**Aktuell:** Timo
+
+**Hinweis zu den Visionen:** Vision ist eine geteilte Aufgabe des gesamten Teams. Visionen, die aus dieser Rolle eingebracht werden, sind zunächst Entwürfe. Bevor sie nach außen verbindlich vertreten werden (Pitches, Partner-Gespräche, öffentliche Setzungen), werden sie im Team konsentbasiert verfeinert.
 
 ### Förderung
 
@@ -84,9 +92,11 @@ Die Person bleibt Teil der Organisation — nur die Verantwortung wechselt.
 
 **Keine formalen Rollen, alles fluid:** Wenn niemand klar zuständig ist, bleiben Bugs liegen und Architekturentscheidungen werden nicht getroffen.
 
-**Holokratie mit Kreisen:** Für die aktuelle Teamgröße (4 Personen) zu viel Overhead. Kann später eingeführt werden.
+**Holokratie mit Kreisen:** Für die aktuelle Teamgröße zu viel Overhead. Kann später eingeführt werden.
 
 ## Offene Fragen
 
 - Ab welcher Teamgröße brauchen wir Kreise statt flacher Rollen?
 - Wer übernimmt die Rolle Förderung?
+- Infrastruktur und Qualität (Server, CI/CD, Testing, Metriken, Logging, Releases) ist aktuell nicht als eigene Rolle abgebildet. Sobald sich jemand verbindlich für diesen Bereich engagieren möchte, wird die Rolle per RFC neu definiert.
+- Wann und in welcher Form wird die Organisation in eine gemeinnützige Trägerstruktur (Foundation/Stiftung) überführt?
