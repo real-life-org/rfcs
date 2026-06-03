@@ -3,7 +3,7 @@
 - **Autor:** Anton Tranélis
 - **Datum:** 2026-04-06
 - **Aktualisiert:** 2026-06-02
-- **Status:** Draft — zurückgestellt
+- **Status:** Postponed
 
 > **Hinweis (2026-06-02):** Dieser RFC ist aktuell zurückgestellt und nicht zur Annahme vorgesehen. Die Frage der formalen Mitgliedschaft in der Organisation wird zu einem späteren Zeitpunkt wieder aufgegriffen, wenn die Trägerstruktur (siehe [RFC-0007](0007-organisation-und-netzwerk.md)) konkreter wird. Der Inhalt bleibt als Arbeitsgrundlage erhalten.
 
