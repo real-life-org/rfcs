@@ -82,7 +82,7 @@ Im Gegensatz zum Netzwerk hat die Organisation **feste Rollen** und einen **klar
 Diese Werte beschreiben, wie wir innerhalb der Organisation arbeiten — operativ, im Alltag:
 
 - **Konsent statt Konsens.** Wir entscheiden nicht "sind alle dafür?", sondern "hat jemand einen schwerwiegenden Einwand?". Siehe [RFC-0001](0001-rfc-prozess.md).
-- **Begegnung im Team.** Wichtige Entscheidungen werden im gemeinsamen Termin besprochen, nicht nur asynchron beschlossen.
+- **Begegnung im Team.** Wichtige Entscheidungen werden in gemeinsamen Terminen und persönlichen Treffen besprochen, nicht nur asynchron beschlossen.
 - **Steward-Haltung.** Wir verstehen uns als Treuhänder:innen des Netzwerks, nicht als Eigentümer.
 - **Transparenz nach innen und außen.** Code, Entscheidungen und Dokumentation sind offen.
 - **Rollenwechsel-Bereitschaft.** Rollen gehören nicht der Person. Wenn sich Verantwortung verschiebt, wird sie neu verteilt.
@@ -116,7 +116,7 @@ Die Organisation wird zu gegebener Zeit in eine **gemeinnützige, neutrale Träg
 
 Aus dem Steward-Verhältnis ergeben sich konkrete Konsequenzen:
 
-- **Für Entscheidungen**: Setzungen, die das Netzwerk oder die Außenwirkung betreffen — Marken, Domain-Strategie, öffentlicher Auftritt, Partnerschaften — sind RFC-pflichtig (siehe [RFC-0001](0001-rfc-prozess.md)). Sie werden nicht einseitig getroffen.
+- **Für Entscheidungen**: Setzungen, die das Netzwerk oder die Außenwirkung betreffen — Marken, öffentlicher Auftritt, Finanzierung, Partnerschaften — sind RFC-pflichtig (siehe [RFC-0001](0001-rfc-prozess.md)). Sie werden nicht einseitig getroffen.
 - **Für Partner**: Partner werden Teil des Netzwerks oder Förderer der Organisation, nicht Eigentümer. Sie können Anker sein, Werkzeuge ermöglichen, Communities tragen — aber sie kontrollieren das Netzwerk nicht.
 - **Für Wachstum**: Die Organisation wächst nur so weit, wie nötig ist, um das Netzwerk zu tragen. Sie ist keine Plattform-Firma mit Skalierungs-Logik.
 - **Für Außendarstellung**: Die Trennung Organisation/Netzwerk wird auch in der Außendarstellung sichtbar — separate Domains, separate Erzählungen, eindeutige Zuordnung dessen, was Trägerstruktur und was Netzwerk-Substanz ist (Details werden in einem separaten RFC zum Außenauftritt geregelt).
