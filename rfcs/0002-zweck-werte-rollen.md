@@ -49,6 +49,12 @@ Rollen definieren Zuständigkeiten. Wer eine Rolle hat, entscheidet eigenständi
 
 **Aktuell:** *unbesetzt — wird gesucht*
 
+### Grafik und Medien-Design
+
+**Zuständigkeit:** Visuelle Identität (Corporate Identity, Logo, Farbsystem, Typografie). Grafik-Design für Web, Print und Social Media. Mediengestaltung für die Außendarstellung.
+
+**Aktuell:** *unbesetzt — wird gesucht*
+
 ## Rollen anpassen
 
 Rollen werden per RFC angepasst, wenn:
@@ -79,3 +85,4 @@ Die Person bleibt Teil der Organisation — nur die Verantwortung wechselt.
 - Ab welcher Teamgröße brauchen wir Kreise statt flacher Rollen?
 - Wer übernimmt die Rolle Infrastruktur und Qualität?
 - Wer übernimmt die Rolle Förderung?
+- Wer übernimmt die Rolle Grafik und Medien-Design?
