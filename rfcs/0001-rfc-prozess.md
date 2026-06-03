@@ -95,6 +95,7 @@ RFCs werden fortlaufend nummeriert: `0001`, `0002`, etc. Die Nummer wird beim Er
 - **Accepted** — Angenommen und gemerged
 - **Rejected** — Abgelehnt und geschlossen
 - **Superseded** — Durch einen späteren RFC ersetzt
+- **Postponed** — Vorerst zurückgestellt; nicht abgelehnt, sondern nicht jetzt relevant. Kann zu einem späteren Zeitpunkt wieder aufgegriffen werden.
 
 ## Alternativen
 
